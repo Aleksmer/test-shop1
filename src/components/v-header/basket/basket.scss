@@ -1,0 +1,20 @@
+.basket {
+  display: flex;
+
+  &__counter {
+    height: 18px;
+    min-width: 18px;
+    padding: 5px;
+    padding-top: 7px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    border-radius: 9px;
+    color: white;
+    vertical-align: center ;
+    background-color: var(--accent-color);
+    transform: translate(-10px, -7px);
+  }
+}
