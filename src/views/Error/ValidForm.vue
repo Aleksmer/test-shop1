@@ -214,14 +214,53 @@ export default {
     checkForm() {
       this.$v.form.$touch()
       if (!this.$v.form.$error) {
+        // this.checkValidation()
         console.log("Валидация прошла успешно")
+        this.forwardGoodValidation()
       }
       else {
         console.log("Заполните все обязательные поля")
       }
+    },
+
+    forwardGoodValidation() {
+      // if (this.$route.name === 'home') console.log('home')
+      // if (this.$route.name === "category") console.log('category')
+      // if (this.$route.name === "subCategory") console.log('subCategory')
+      this.$router.push({name: 'goodValidation', meta: {text: 'Отлично!'}})
     }
+    // checkValidation() {
+    //   console.log(111)
+    //   // this.$route.name === 'GoodValidation'
+    //   if (this.$route.name === 'subCategory') {
+    //     // this.forwardCategory()
+    //     console.log(222)
+    //     router.route.name === 'GoodValidation'
+    //   }
+    // }
   }
 }
 </script>
 
 <style lang="scss" src="./Error.scss" scoped/>
+
+
+
+
+
+//
+//   checkLink() {
+//     if (this.$route.name === 'home') this.forwardCategory()
+//     if (this.$route.name === "category") {
+//
+//       let category = Number(this.$route.params.category)
+//       if (this.getCategory.find(p => p.id === category)) this.forwardSubCategory()
+//       else this.forwardError()
+//     }
+//   },
+// },
+//
+// mounted() {
+//   this.checkLink()
+
+

@@ -1,12 +1,12 @@
 <template>
-  <v-button class="button">
+  <button class="button">
     Добавить в корзину
-  </v-button>
+  </button>
 </template>
 
 <script>
 export default {
-  name: "v-button"
+  name: "button"
 }
 </script>
 

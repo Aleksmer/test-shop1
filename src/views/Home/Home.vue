@@ -38,6 +38,9 @@ export default {
         else this.forwardError()
       }
     },
+    // forwardGoodValidation() {
+    //   console.log(333)
+    // }
   },
   mounted() {
     this.checkLink()

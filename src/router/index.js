@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home/Home'
 import Error from "@/views/Error/Error";
+import GoodValidation from "@/views/Error/GoodValidation/GoodValidation";
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,11 @@ const routes = [
     ]
   },
   {
+    path: '/goodValidation',
+    name: 'goodValidation',
+    component: GoodValidation,
+  },
+  {
     path: '*',
     name: 'error',
     component: Error,
@@ -31,7 +37,7 @@ const routes = [
     meta: {
       text: ''
     }
-  }
+  },
 ]
 
 const router = new VueRouter({

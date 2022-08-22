@@ -86,6 +86,7 @@
           :class="imgFilters"
           :style="[getImgSizes, getImgRotate]"
           src="@/assets/img/carditem/shc.jpg"
+          alt="шауркот"
       >
       <h1 v-else>Кот скоро вернется</h1>
     </div>
@@ -215,7 +216,7 @@ export default {
     },
     searchProducts(searchText) {
       console.log('Загрузить товары:', searchText)
-    }
+    },
   },
 }
 </script>
