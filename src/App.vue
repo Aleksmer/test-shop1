@@ -13,8 +13,9 @@
 <script>
 import vHeader from '@/components/v-header/v-header'
 import sidebar from '@/components/sidebar/sidebar'
-import {mapActions} from "vuex";
-import loader from "@/components/loader/loader";
+import {mapActions} from "vuex"
+import loader from "@/components/loader/loader"
+
 
 export default {
   name: 'app',
@@ -23,6 +24,7 @@ export default {
   }),
   methods: mapActions(['fetchPosts']),
   async mounted() {
+    console.log(this.$route)
     await this.fetchPosts();
         // this.loaded = false
     setTimeout(() => {
@@ -32,7 +34,7 @@ export default {
   components: {
     loader,
     vHeader,
-    sidebar
+    sidebar,
   }
 }
 </script>

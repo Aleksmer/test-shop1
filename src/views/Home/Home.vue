@@ -27,7 +27,7 @@ export default {
       this.$router.push({name: 'subCategory', params: {subCategory: showSubCategory.id, category: showCategory.id}})
     },
     forwardError() {
-      this.$router.push({name: 'error', meta: {text: 'Нет контента'}})
+      // this.$router.push({name: 'error', meta: {text: 'Нет контента'}})
     },
     checkLink() {
       if (this.$route.name === 'home') this.forwardCategory()

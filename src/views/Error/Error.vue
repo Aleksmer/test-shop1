@@ -3,6 +3,57 @@
     <errorSvg class="error__svg"/>
     <p class="error__text" :class="{getRedText: redText}">В данной категории товаров пока нет</p>
     <br><br>
+    <button
+        class="searchOfText__button"
+        @click="$router.push({ name: 'films'})"
+    >Перейти к фильмам
+    </button>
+    <br><br>
+
+
+
+    <br><br>
+    <button class="searchOfText__button" @click="showModal"
+    >Отправить что-нибудь
+    </button>
+    <Modal
+        class="modalBody"
+        title="Очень важная информация"
+        description="Lorem Lorem  Lorem Lorem  Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem "
+        v-if="isOpenModal"
+        @close="isOpenModal = false"
+    >
+    </Modal>
+    <br><br>
+    <div>
+      <div
+          class="divBlock"
+          v-on:scroll="onScroll"
+          ref="divBlock"
+      >
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eos fugit nostrum nulla placeat? Aliquam
+          assumenda at dolore dolorum esse id, illo ipsum maiores molestias necessitatibus optio possimus sunt suscipit.
+        </div>
+        <div>Animi architecto aspernatur deleniti doloribus error excepturi fugiat incidunt ipsa magnam maxime minima
+          nemo
+          nihil nisi nostrum, officiis optio quisquam quod ratione, sapiente sequi soluta unde, vel veritatis voluptate
+          voluptatibus.
+        </div>
+        <div>Et fugiat, ipsum laudantium maiores quas sed unde vel voluptates. Beatae deserunt dicta laboriosam omnis
+          porro praesentium veritatis. Ad adipisci assumenda debitis incidunt iure, laborum magnam minus molestiae
+          possimus sit.
+        </div>
+        <div>Accusamus autem cumque debitis enim excepturi magni placeat temporibus? Adipisci animi asperiores dolorem
+          eaque esse ex facilis, laudantium natus pariatur quas sequi sit? Eaque est impedit laudantium magnam
+          perspiciatis repellendus.
+        </div>
+        <div>A deserunt libero officiis quidem recusandae reprehenderit! Animi enim est iste iusto officiis praesentium
+          veritatis? Deleniti eius modi quo. Alias architecto blanditiis dignissimos dolorem inventore laboriosam odit
+          quaerat? A, ullam!
+        </div>
+      </div>
+      <button :disabled="!isRulesReaded" style="width: 200px; height: 50px; background-color: greenyellow ">Закрыть</button>
+    </div>
     <br><br>
     <div class="counter">
       <button class="counter__button" v-on:click="downPage">-</button>
@@ -90,10 +141,9 @@
       >
       <h1 v-else>Кот скоро вернется</h1>
     </div>
-
     <div class="searchOfText">
       <h1 class="searchOfText__title">Список товаров</h1>
-      <MyInput @search="searchProducts" />
+      <MyInput @search="searchProducts"/>
     </div>
     <ul class="product-cardList">
       <li
@@ -109,8 +159,7 @@
         />
       </li>
     </ul>
-
-    <validForm />
+    <validForm/>
   </div>
 </template>
 
@@ -119,6 +168,7 @@ import productCard from "@/views/Error/ProductCard"
 import errorSvg from '@svg/error/error.svg'
 import MyInput from "@/views/Error/MyInput"
 import ValidForm from "./ValidForm"
+import Modal from "@/views/Error/Modal"
 
 export default {
   name: "Error",
@@ -173,16 +223,29 @@ export default {
           imgUrl: 'https://porodakoshek.ru/wp-content/uploads/2020/06/Kavkazskaya-lesnaya-koshka-na-prirode.jpg',
           // count: 22,
         }
-      ]
+      ],
+      isOpenModal: false,
+      isRulesReaded: false
     }
   },
+
+  mounted() {
+    const modalBody = this.$refs.divBlock
+    modalBody.scrollTop = modalBody.scrollHeight - modalBody.clientHeight
+
+  },
+
   components: {
     MyInput,
     errorSvg,
     productCard,
-    ValidForm
+    ValidForm,
+    Modal
   },
   computed: {
+    classDiv() {
+      return ['class', {'class--active': this.nameList.length, 'class--red': this.searchText.redText}]
+    },
     allNames() {
       return this.nameList.length
     },
@@ -201,6 +264,9 @@ export default {
       }
     }
   },
+  created() {
+    this.$firstPlugin()
+  },
   methods: {
     downPage() {
       return this.currentPage > 0 ? --this.currentPage : 0
@@ -216,7 +282,15 @@ export default {
     },
     searchProducts(searchText) {
       console.log('Загрузить товары:', searchText)
+        // searchText = searchText.toUpperCase()
+        // this.showedSearchText = true
     },
+    showModal() {
+      this.isOpenModal = true
+    },
+    onScrollEnd() {
+      this.isRulesReaded = true;
+    }
   },
 }
 </script>

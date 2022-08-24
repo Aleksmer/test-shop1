@@ -1,12 +1,22 @@
 <template>
-  <button class="button">
-    Добавить в корзину
+  <button @click="$emit('clickButton')" class="button">
+     {{text}}
   </button>
 </template>
 
 <script>
 export default {
-  name: "button"
+  name: "v-button",
+  props: {
+    isAccess: {
+      type: Boolean,
+      default: false,
+    },
+    text: {
+      type: String,
+      required: true,
+    }
+  }
 }
 </script>
 

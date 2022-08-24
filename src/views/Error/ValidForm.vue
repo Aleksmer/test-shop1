@@ -224,20 +224,8 @@ export default {
     },
 
     forwardGoodValidation() {
-      // if (this.$route.name === 'home') console.log('home')
-      // if (this.$route.name === "category") console.log('category')
-      // if (this.$route.name === "subCategory") console.log('subCategory')
       this.$router.push({name: 'goodValidation', meta: {text: 'Отлично!'}})
     }
-    // checkValidation() {
-    //   console.log(111)
-    //   // this.$route.name === 'GoodValidation'
-    //   if (this.$route.name === 'subCategory') {
-    //     // this.forwardCategory()
-    //     console.log(222)
-    //     router.route.name === 'GoodValidation'
-    //   }
-    // }
   }
 }
 </script>

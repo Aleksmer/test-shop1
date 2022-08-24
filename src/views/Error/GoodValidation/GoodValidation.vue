@@ -1,6 +1,7 @@
 <template>
   <div class="goodValidation">
-    <p>good Validation!</p>
+    <p>Good Validation!</p>
+    <router-view></router-view>
     <button v-on:click="backToError()">Назад</button>
   </div>
 </template>
@@ -14,7 +15,6 @@ export default {
   text: '',
   methods: {
     backToError() {
-
       this.$router.push({name: 'error', meta: {text: 'Нет контента'}})
     }
   }
@@ -22,7 +22,8 @@ export default {
 </script>
 
 <style scoped>
-  goodValidation {
+  .goodValidation {
+    background-color: azure;
     display: flex;
     width: 100%;
     height: auto;

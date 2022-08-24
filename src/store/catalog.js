@@ -13,11 +13,14 @@ export default {
             let category = data.filter(p => p.parent_id === -1)
             let subCategory = []
             category.forEach(item => {
-            subCategory = [...subCategory, ...data.filter(p => p.parent_id === item.id)]
+                subCategory = [...subCategory, ...data.filter(p => p.parent_id === item.id)]
             })
             let products = []
             subCategory.forEach(item => {
                 products = [...products, ...data.filter(p => p.parent_id === item.id)]
+            })
+            products.forEach(item => {
+                item.inBasket = false
             })
 
             console.log(category)
@@ -27,6 +30,12 @@ export default {
             commit('setCategory', category)
             commit('setSubCategory', subCategory)
             commit('setProducts', products)
+        },
+        async fetchProducts({commit}, id) {
+            let product
+            await fetch("http://test1.web-gu.ru/?action=show_product&id=" + id)
+                .then(response => product = response.json())
+            return product
         }
     },
     mutations: {

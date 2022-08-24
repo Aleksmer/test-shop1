@@ -4,6 +4,11 @@
     <button class="searchOfText__button" @click="$emit('search',searchText)">
       Найти
     </button>
+    <div
+        :inner-html.prop='searchText | showSearchText | emoji | replaceText | marked'
+    >
+      <!--      {{searchText | showSearchText | emoji | replaceText | marked}}-->
+    </div>
   </div>
 </template>
 
@@ -18,6 +23,17 @@ export default {
   data() {
     return {
       searchText: '',
+    }
+  },
+  filters: {
+    showSearchText(searchText) {
+      return searchText.toUpperCase()
+    },
+    emoji(searchText) {
+      return searchText.replace(':)', '😀')
+    },
+    replaceText(searchText) {
+      return searchText.replace("...", "Marked - Markdown Parser\n" + "========================\n" + "\n" + "How To Use The Demo\n" + "-------------------\n" + "\n" + "1. Type in stuff on the left.\n" + "2. See the live updates on the right.\n")
     }
   }
 }

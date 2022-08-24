@@ -1,0 +1,70 @@
+.popup {
+  height: 90%;
+  width: 633px;
+  position: absolute;
+  right: 0;
+  z-index: 999;
+  top: 0;
+  background-color: white;
+
+  &__header {
+    height: 70px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title {
+      width: 90%;
+      left: 0;
+      display: flex;
+    }
+
+    &__close {
+      background-color: red;
+    }
+  }
+
+  &__content {
+    height: 500px;
+    width: 100%;
+  }
+
+  &__validation {
+    height: 500px;
+    width: 100%;
+  }
+}
+
+.popup-product {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+
+  &__img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  &__name {
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21px;
+  }
+
+  &__price {
+    margin-top: 25px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  &__description {
+    margin-top: 25px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
